@@ -1,4 +1,4 @@
-package systems.rishon.velocitySync.jedis
+package systems.rishon.velocitysync.jedis
 
 import redis.clients.jedis.JedisPool
 import redis.clients.jedis.JedisPoolConfig

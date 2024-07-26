@@ -1,4 +1,4 @@
-package systems.rishon.velocitySync.handler
+package systems.rishon.velocitysync.handler
 
 interface IHandler {
 

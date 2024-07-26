@@ -1,4 +1,4 @@
-package systems.rishon.velocitySync.api
+package systems.rishon.velocitysync.api
 
 class VelocitySyncAPI {
 

@@ -1,7 +1,7 @@
-package systems.rishon.velocitySync.handler
+package systems.rishon.velocitysync.handler
 
 import com.moandjiezana.toml.Toml
-import systems.rishon.velocitySync.VelocitySync
+import systems.rishon.velocitysync.VelocitySync
 import java.io.File
 import java.io.IOException
 import java.nio.file.Files

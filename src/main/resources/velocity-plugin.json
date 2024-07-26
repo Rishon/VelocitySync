@@ -1,0 +1,9 @@
+{
+  "id": "velocitysync",
+  "name": "VelocitySync",
+  "version": "1.0",
+  "main": "systems.rishon.velocitysync.VelocitySync",
+  "authors": [
+    "Rishon"
+  ]
+}

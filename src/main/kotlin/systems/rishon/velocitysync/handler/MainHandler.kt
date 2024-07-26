@@ -1,7 +1,7 @@
-package systems.rishon.velocitySync.handler
+package systems.rishon.velocitysync.handler
 
-import systems.rishon.velocitySync.VelocitySync
-import systems.rishon.velocitySync.jedis.JedisManager
+import systems.rishon.velocitysync.VelocitySync
+import systems.rishon.velocitysync.jedis.JedisManager
 
 class MainHandler(private val instance: VelocitySync) : IHandler {
 
