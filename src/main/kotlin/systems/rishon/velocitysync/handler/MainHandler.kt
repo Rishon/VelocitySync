@@ -6,7 +6,7 @@ import systems.rishon.velocitysync.jedis.JedisManager
 class MainHandler(private val instance: VelocitySync) : IHandler {
 
     // Jedis
-    private var jedisManager: JedisManager = null!!
+    private lateinit var jedisManager: JedisManager
 
     override fun init() {
         handler = this

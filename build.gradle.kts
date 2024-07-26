@@ -19,6 +19,7 @@ repositories {
 
 dependencies {
     compileOnly("com.velocitypowered:velocity-api:3.3.0-SNAPSHOT")
+    compileOnly("org.projectlombok:lombok:1.18.32")
 
     implementation("redis.clients:jedis:5.1.3")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
@@ -27,6 +28,12 @@ dependencies {
 val targetJavaVersion = 17
 kotlin {
     jvmToolchain(targetJavaVersion)
+}
+
+tasks.shadowJar {
+    archiveBaseName.set("VelocitySync")
+    archiveClassifier.set("")
+    mergeServiceFiles()
 }
 
 publishing {
