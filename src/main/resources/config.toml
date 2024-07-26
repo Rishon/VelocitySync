@@ -1,0 +1,9 @@
+instance-prefix = "proxy-{id}"
+
+debug = false # Enable debug logging
+
+[redis]
+host = "localhost"
+port = 6379
+password = ""
+timeout = 2000

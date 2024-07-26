@@ -25,6 +25,8 @@ repositories {
 dependencies {
     compileOnly("com.velocitypowered:velocity-api:3.3.0-SNAPSHOT")
     kapt("com.velocitypowered:velocity-api:3.3.0-SNAPSHOT")
+
+    implementation("redis.clients:jedis:5.1.3")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 }
 
