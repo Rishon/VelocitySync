@@ -15,7 +15,7 @@ import java.nio.file.Path
 @Plugin(
     id = "velocitysync",
     name = "VelocitySync",
-    version = BuildConstants.VERSION,
+    version = "1.0",
     authors = ["Rishon"],
 )
 class VelocitySync @Inject constructor(val logger: Logger, val directory: Path) {

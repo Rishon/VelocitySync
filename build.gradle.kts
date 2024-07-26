@@ -1,12 +1,7 @@
-import org.jetbrains.gradle.ext.settings
-import org.jetbrains.gradle.ext.taskTriggers
-
 plugins {
     kotlin("jvm") version "2.0.20-Beta1"
-    kotlin("kapt") version "2.0.20-Beta1"
     id("com.github.johnrengelman.shadow") version "8.1.1"
-    id("eclipse")
-    id("org.jetbrains.gradle.plugin.idea-ext") version "1.1.8"
+    id("maven-publish")
 }
 
 group = "systems.rishon"
@@ -24,7 +19,6 @@ repositories {
 
 dependencies {
     compileOnly("com.velocitypowered:velocity-api:3.3.0-SNAPSHOT")
-    kapt("com.velocitypowered:velocity-api:3.3.0-SNAPSHOT")
 
     implementation("redis.clients:jedis:5.1.3")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
@@ -35,18 +29,26 @@ kotlin {
     jvmToolchain(targetJavaVersion)
 }
 
-val templateSource = file("src/main/templates")
-val templateDest = layout.buildDirectory.dir("generated/sources/templates")
-val generateTemplates = tasks.register<Copy>("generateTemplates") {
-    val props = mapOf("version" to project.version)
-    inputs.properties(props)
-
-    from(templateSource)
-    into(templateDest)
-    expand(props)
+publishing {
+    repositories {
+        maven {
+            name = "seladevelopment-repo"
+            url = uri("https://repo.rishon.systems/releases")
+            credentials {
+                username = System.getenv("MAVEN_NAME")
+                password = System.getenv("MAVEN_SECRET")
+            }
+            authentication {
+                create<BasicAuthentication>("basic")
+            }
+        }
+    }
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "systems.rishon"
+            artifactId = "velocitysync-api"
+            version = "${project.version}"
+            from(components["java"])
+        }
+    }
 }
-
-sourceSets.main.configure { java.srcDir(generateTemplates.map { it.outputs }) }
-
-project.idea.project.settings.taskTriggers.afterSync(generateTemplates)
-project.eclipse.synchronizationTasks(generateTemplates)
